@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" data-locale="fr">
 <head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>China Beyond — Contact</title><link rel="icon" type="image/svg+xml" href="assets/china-beyond-mark-v13.svg"/><link rel="stylesheet" href="pages.css"/></head>
-<body>
+<body class="contact-page">
   <div class="top-bar"><div class="container top-bar-inner"><span>Voyages authentiques · Chine, autrement</span><div class="top-links"><a href="mailto:contact@beyondcn.com">contact@beyondcn.com</a><a href="tel:+33761086397">+33 7 61 08 63 97</a></div></div></div>
   <header><div class="container nav-inner"><a class="logo" href="index.html"><img class="logo-mark" src="assets/china-beyond-mark-v13.svg" alt=""/><span class="logo-wordmark">China Beyond</span></a><div class="nav-wrapper"><nav class="nav-links" id="navLinks"><a href="vision.html" data-i18n="navVision">Notre vision</a><a href="destinations.html" data-i18n="navDestinations">Destinations</a><a href="styles.html" data-i18n="navStyles">Styles de voyage</a><a href="contact.html" data-i18n="navContact">Contact</a></nav><div class="nav-actions"><div class="lang-switcher"><button class="lang-btn active" data-lang="fr">FR</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="zh">CN</button></div><button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></div></div></header>
   <main>
@@ -11,4 +11,26 @@
   </main>
   <footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-logo"><img class="logo-mark" src="assets/china-beyond-mark-v13-inverse.svg" alt=""/><span class="logo-wordmark">China Beyond</span></div></div><div class="footer-col"><h4 data-i18n="footerExplore">Explorer</h4><a href="vision.html" data-i18n="navVision">Notre vision</a><a href="destinations.html" data-i18n="navDestinations">Destinations</a><a href="styles.html" data-i18n="navStyles">Styles de voyage</a></div><div class="footer-col"><h4 data-i18n="footerContact">Contact</h4><a href="contact.html" data-i18n="navContact">Contact</a><a href="mailto:contact@beyondcn.com">contact@beyondcn.com</a></div><div class="footer-col"><h4 data-i18n="footerFollow">Suivre</h4><a href="mailto:contact@beyondcn.com">Newsletter</a></div></div><div class="footer-bottom"><span>© 2026 China Beyond</span><span data-i18n="footerNote">La Chine au-delà des apparences · Authentic journeys · 定制深度中国旅行</span></div></div></footer>
   <script src="pages.js"></script>
+  <script>
+    const compactContactLede={fr:'Une première idée suffit pour commencer.',en:'One first idea is enough to begin.',zh:'一个念头，就可以开始。'};
+    const applyCompactContactLede=(locale)=>{const target=document.querySelector('[data-i18n="contactLede"]');if(target)target.textContent=compactContactLede[locale]||compactContactLede.fr};
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>applyCompactContactLede(btn.dataset.lang),0)));
+    applyCompactContactLede(localStorage.getItem('china-beyond-locale')||'fr');
+  </script>
+  <script>
+    const applyWechatRow=()=>{const row=document.querySelector('[data-i18n="contactLocationLabel"]')?.parentElement;if(!row)return;const label=row.querySelector('[data-i18n="contactLocationLabel"]');const value=row.querySelector('span:last-child');if(label)label.textContent='WeChat / 微信号';if(value)value.textContent='Ningsiiii'};
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(applyWechatRow,0)));
+    applyWechatRow();
+  </script>
+  <script>
+    const addContactDetails=()=>{
+      const topLinks=document.querySelector('.top-links');
+      if(topLinks&&!topLinks.querySelector('.wechat-top-link')){const wechat=document.createElement('span');wechat.className='wechat-top-link';wechat.textContent='WeChat: Ningsiiii';topLinks.appendChild(wechat)}
+      const footerContact=[...document.querySelectorAll('.footer-col')].find(col=>col.querySelector('[data-i18n="footerContact"]'));
+      if(footerContact&&!footerContact.querySelector('.wechat-footer-link')){const phone=document.createElement('a');phone.href='tel:+33761086397';phone.textContent='+33 7 61 08 63 97';footerContact.appendChild(phone);const wechat=document.createElement('span');wechat.className='wechat-footer-link';wechat.textContent='WeChat: Ningsiiii';footerContact.appendChild(wechat)}
+      const label=document.querySelector('[data-i18n="contactLocationLabel"]');if(label)label.textContent='WeChat';
+    };
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(addContactDetails,0)));
+    addContactDetails();
+  </script>
 </body></html>
