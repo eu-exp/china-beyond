@@ -24,8 +24,6 @@
   </script>
   <script>
     const addContactDetails=()=>{
-      const topLinks=document.querySelector('.top-links');
-      if(topLinks&&!topLinks.querySelector('.wechat-top-link')){const wechat=document.createElement('span');wechat.className='wechat-top-link';wechat.textContent='WeChat: Ningsiiii';topLinks.appendChild(wechat)}
       const footerContact=[...document.querySelectorAll('.footer-col')].find(col=>col.querySelector('[data-i18n="footerContact"]'));
       if(footerContact&&!footerContact.querySelector('.wechat-footer-link')){const phone=document.createElement('a');phone.href='tel:+33761086397';phone.textContent='+33 7 61 08 63 97';footerContact.appendChild(phone);const wechat=document.createElement('span');wechat.className='wechat-footer-link';wechat.textContent='WeChat: Ningsiiii';footerContact.appendChild(wechat)}
       const label=document.querySelector('[data-i18n="contactLocationLabel"]');if(label)label.textContent='WeChat';
