@@ -182,7 +182,7 @@
   <header><div class="container nav-inner">
     <a class="logo" href="#top" aria-label="China Beyond home"><img class="logo-mark" src="assets/china-beyond-mark-v13.svg" alt="" aria-hidden="true" /><span class="logo-wordmark">China Beyond</span></a>
     <div class="nav-wrapper">
-      <nav class="nav-links" id="navLinks" aria-label="Navigation principale"><a href="vision.html" data-i18n="navVision">Notre vision</a><a href="destinations.html" data-i18n="navDestinations">Destinations</a><a href="styles.html" data-i18n="navStyles">Styles de voyage</a><a href="contact.html" data-i18n="navContact">Contact</a></nav>
+      <nav class="nav-links" id="navLinks" aria-label="Navigation principale"><a href="about.html" data-i18n="navAbout">À propos</a><a href="vision.html" data-i18n="navVision">Notre vision</a><a href="destinations.html" data-i18n="navDestinations">Destinations</a><a href="styles.html" data-i18n="navStyles">Styles de voyage</a><a href="contact.html" data-i18n="navContact">Contact</a></nav>
       <div class="nav-actions"><div class="lang-switcher" aria-label="Language switcher"><button class="lang-btn active" data-lang="fr">FR</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="zh">CN</button></div><button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
     </div>
   </div></header>
@@ -245,6 +245,12 @@
     };
     document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>applyCompactHeroText(btn.dataset.lang),0)));
     applyCompactHeroText(localStorage.getItem('china-beyond-locale')||'fr');
+  </script>
+  <script>
+    const aboutNavLabels={fr:'À propos',en:'About',zh:'关于我们'};
+    const syncAboutNav=(locale)=>document.querySelectorAll('[data-i18n="navAbout"]').forEach(el=>{el.textContent=aboutNavLabels[locale]||aboutNavLabels.fr});
+    syncAboutNav(localStorage.getItem('china-beyond-locale')||'fr');
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>syncAboutNav(btn.dataset.lang),0)));
   </script>
 </body>
 </html>

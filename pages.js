@@ -11,4 +11,8 @@ const saved=localStorage.getItem('china-beyond-locale');if(saved&&pageCopy[saved
 document.querySelectorAll('img[src^="assets/china-beyond-mark-v13"]').forEach(img=>{img.src=img.src.replace('assets/','')});document.querySelectorAll('link[rel~="icon"]').forEach(link=>{link.href='china-beyond-mark-v13.svg'});
 const contactForm=document.getElementById('contactForm');
 if(contactForm)contactForm.addEventListener('submit',(event)=>{event.preventDefault();const name=document.getElementById('contactName').value.trim();const email=document.getElementById('contactEmail').value.trim();const message=document.getElementById('contactMessage').value.trim();const subject=encodeURIComponent('China Beyond — Travel enquiry');const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);window.location.href=`mailto:contact@beyondcn.com?subject=${subject}&body=${body}`});
-document.querySelectorAll('a[href="vision.html"]').forEach(a=>{a.href='about.html'});
+document.querySelectorAll('a[href="vision.html"]').forEach(a=>{a.href='vision.html'});
+const aboutNavLabels={fr:'À propos',en:'About',zh:'关于我们'};
+const syncAboutNav=locale=>document.querySelectorAll('[data-i18n="navAbout"]').forEach(el=>{el.textContent=aboutNavLabels[locale]||aboutNavLabels.fr});
+syncAboutNav(localStorage.getItem('china-beyond-locale')||'fr');
+document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>syncAboutNav(btn.dataset.lang),0)));
