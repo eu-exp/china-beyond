@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <title>China Beyond — balanced white C+B mark</title>
+  <g stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M92 32A44 44 0 1 0 92 88" stroke-width="12"/>
+    <path d="M48 36V84"/>
+    <path d="M48 36H65C75 36 81 41 81 49C81 56 76 60 66 60H48"/>
+    <path d="M48 60H67C77 60 82 65 82 74C82 81 76 84 66 84H48"/>
+  </g>
+</svg>
