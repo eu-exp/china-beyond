@@ -18,17 +18,28 @@
     applyCompactContactLede(localStorage.getItem('china-beyond-locale')||'fr');
   </script>
   <script>
-    const applyWechatRow=()=>{const row=document.querySelector('[data-i18n="contactLocationLabel"]')?.parentElement;if(!row)return;const label=row.querySelector('[data-i18n="contactLocationLabel"]');const value=row.querySelector('span:last-child');if(label)label.textContent='WeChat / 微信号';if(value)value.textContent='Ningsiiii'};
-    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(applyWechatRow,0)));
-    applyWechatRow();
-  </script>
-  <script>
-    const addContactDetails=()=>{
-      const footerContact=[...document.querySelectorAll('.footer-col')].find(col=>col.querySelector('[data-i18n="footerContact"]'));
-      if(footerContact&&!footerContact.querySelector('.wechat-footer-link')){const phone=document.createElement('a');phone.href='tel:+33761086397';phone.textContent='+33 7 61 08 63 97';footerContact.appendChild(phone);const wechat=document.createElement('span');wechat.className='wechat-footer-link';wechat.textContent='WeChat: Ningsiiii';footerContact.appendChild(wechat)}
-      const label=document.querySelector('[data-i18n="contactLocationLabel"]');if(label)label.textContent='WeChat';
+    const contactLabels={
+      fr:{email:'E-mail:',phone:'Téléphone:',wechat:'WeChat:'},
+      en:{email:'E-mail:',phone:'Phone:',wechat:'WeChat:'},
+      zh:{email:'邮箱：',phone:'电话：',wechat:'微信：'}
     };
-    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(addContactDetails,0)));
-    addContactDetails();
+    const applyContactDetails=(locale)=>{
+      const labels=contactLabels[locale]||contactLabels.fr;
+      const emailLabel=document.querySelector('[data-i18n="contactEmailLabel"]');
+      const phoneLabel=document.querySelector('[data-i18n="contactPhoneLabel"]');
+      if(emailLabel)emailLabel.textContent=labels.email;
+      if(phoneLabel)phoneLabel.textContent=labels.phone;
+      const row=document.querySelector('[data-i18n="contactLocationLabel"]')?.parentElement;
+      if(row){const label=row.querySelector('[data-i18n="contactLocationLabel"]');const value=row.querySelector('span:last-child');if(label)label.textContent=labels.wechat;if(value)value.textContent='Ningsiiii'}
+      const footerContact=[...document.querySelectorAll('.footer-col')].find(col=>col.querySelector('[data-i18n="footerContact"]'));
+      if(footerContact){
+        if(!footerContact.querySelector('a[href="tel:+33761086397"]')){const phone=document.createElement('a');phone.href='tel:+33761086397';phone.textContent='+33 7 61 08 63 97';footerContact.appendChild(phone)}
+        let wechat=footerContact.querySelector('.wechat-footer-link');
+        if(!wechat){wechat=document.createElement('span');wechat.className='wechat-footer-link';footerContact.appendChild(wechat)}
+        wechat.textContent=`${labels.wechat} Ningsiiii`;
+      }
+    };
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>applyContactDetails(btn.dataset.lang),0)));
+    applyContactDetails(localStorage.getItem('china-beyond-locale')||'fr');
   </script>
 </body></html>

@@ -54,7 +54,16 @@
     .hero h1{font-size:clamp(1.9rem,3.4vw,3.2rem);line-height:1.08;letter-spacing:-.015em;margin-bottom:1.35rem}
     .hero h1 span{color:var(--accent-soft)}
     .hero p{max-width:460px;font-size:.94rem;line-height:1.75;opacity:.94;margin-bottom:1.7rem}
-    .hero-buttons{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:3.5rem}
+    .hero-buttons{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1rem}
+    .hero-buttons.single-hero-button{display:block}
+    .single-hero-button .btn{min-width:190px}
+    .hero-contact-panel{display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;max-width:720px;margin:0 0 2.6rem}
+    .hero-contact-panel.open{display:grid}
+    .quick-contact-option{display:flex;min-height:76px;flex-direction:column;justify-content:space-between;padding:.8rem .85rem;border:1px solid rgba(255,255,255,.34);background:rgba(18,24,18,.34);color:var(--white);transition:var(--ease)}
+    .quick-contact-option:hover{border-color:var(--accent-soft);background:rgba(18,24,18,.62);transform:translateY(-2px)}
+    .quick-contact-option span{font-size:.78rem;font-weight:600;letter-spacing:.04em}
+    .quick-contact-option small{color:rgba(255,255,255,.72);font-size:.68rem;line-height:1.35;overflow-wrap:anywhere}
+    .quick-contact-note{grid-column:1/-1;color:rgba(255,255,255,.68);font-size:.7rem;line-height:1.5;margin-top:.2rem}
     .hero .btn-primary{background:var(--white);color:var(--black)}
     .hero .btn-primary:hover{background:var(--accent);color:var(--white)}
     .hero .btn-outline{border-color:rgba(255,255,255,.75);color:var(--white)}
@@ -144,8 +153,11 @@
       .eyebrow{font-size:.68rem;letter-spacing:.18em;margin-bottom:1rem}
       .hero h1{font-size:clamp(1.35rem,6.2vw,1.85rem);line-height:1.05;letter-spacing:-.01em;margin-bottom:.9rem}
       .hero p{font-size:.88rem;line-height:1.6;margin-bottom:1.2rem}
-      .hero-buttons{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:2.3rem}
+      .hero-buttons{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem}
+      .hero-buttons.single-hero-button{display:block}
       .hero .btn{width:100%;min-width:0;padding:.7rem .65rem;font-size:.76rem;white-space:nowrap}
+      .single-hero-button .btn{width:auto;min-width:0}
+      .hero-contact-panel{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:2rem}
       .intro-copy>.btn{width:auto;padding:.65rem .85rem;font-size:.78rem;white-space:nowrap}
       .cta .btn{width:auto;padding:.7rem .85rem;font-size:.78rem;white-space:nowrap}
       .hero-badges{gap:.55rem 1.2rem;font-size:.78rem}
@@ -188,7 +200,7 @@
   </div></header>
 
   <main id="top">
-    <section class="hero"><div class="container"><div class="hero-content"><div class="eyebrow" data-i18n="heroEyebrow">Voyager autrement</div><h1 data-i18n="heroTitle">La Chine<br><span>au-delà des apparences</span></h1><p data-i18n="heroText">Des itinéraires sensibles, pensés autour des rencontres, des paysages et des histoires qui donnent à chaque région son vrai relief.</p><div class="hero-buttons"><a class="btn btn-primary" href="#destinations" data-i18n="heroPrimary">Explorer les destinations</a><a class="btn btn-outline" href="#contact" data-i18n="heroSecondary">Imaginer un voyage</a></div><div class="hero-badges"><span class="badge-item" data-i18n="badge1">Création sur mesure</span><span class="badge-item" data-i18n="badge2">Guides locaux</span><span class="badge-item" data-i18n="badge3">Rythme attentif</span></div></div></div></section>
+    <section class="hero"><div class="container"><div class="hero-content"><div class="eyebrow" data-i18n="heroEyebrow">Voyager autrement</div><h1 data-i18n="heroTitle">La Chine<br><span>au-delà des apparences</span></h1><p data-i18n="heroText">Des itinéraires sensibles, pensés autour des rencontres, des paysages et des histoires qui donnent à chaque région son vrai relief.</p><div class="hero-buttons single-hero-button"><button class="btn btn-primary" type="button" id="journeyContactButton" aria-expanded="false" aria-controls="journeyContactOptions" data-i18n="heroSecondary">聊聊旅程</button></div><div class="hero-contact-panel" id="journeyContactOptions" aria-hidden="true"><a class="quick-contact-option" href="tel:+33761086397"><span data-contact-label="phone">电话</span><small>+33 7 61 08 63 97</small></a><a class="quick-contact-option" href="mailto:contact@beyondcn.com?subject=China%20Beyond%20—%20Travel%20enquiry"><span data-contact-label="email">邮箱</span><small>contact@beyondcn.com</small></a><a class="quick-contact-option" href="sms:+33761086397"><span data-contact-label="sms">短信</span><small>+33 7 61 08 63 97</small></a><a class="quick-contact-option quick-contact-wechat" href="weixin://dl/chat?Ningsiiii" data-wechat-id="Ningsiiii"><span data-contact-label="wechat">WeChat</span><small>Ningsiiii</small></a><p class="quick-contact-note" id="wechatContactNote" data-contact-note>点击 WeChat 后会尝试打开微信，并复制微信号 Ningsiiii。</p></div><div class="hero-badges"><span class="badge-item" data-i18n="badge1">Création sur mesure</span><span class="badge-item" data-i18n="badge2">Guides locaux</span><span class="badge-item" data-i18n="badge3">Rythme attentif</span></div></div></div></section>
 
     <section class="intro" id="vision"><div class="container intro-grid"><div class="intro-copy"><div class="eyebrow-dark" data-i18n="introEyebrow">Notre regard</div><h2 class="section-title" data-i18n="introTitle">La Chine ne se résume jamais à une image.</h2><p data-i18n="introText">China Beyond imagine des voyages qui prennent le temps de regarder. Un marché au petit matin, une route de montagne, une conversation autour d'une table : nous composons des parcours où le quotidien devient la plus belle porte d'entrée.</p><a class="btn btn-outline" href="#styles" data-i18n="introCta">Voir notre manière de voyager</a><div class="stats"><div class="stat"><div class="stat-number">12</div><div class="stat-label" data-i18n="stat1">régions explorées</div></div><div class="stat"><div class="stat-number">100%</div><div class="stat-label" data-i18n="stat2">itinéraires singuliers</div></div><div class="stat"><div class="stat-number">1:1</div><div class="stat-label" data-i18n="stat3">échange humain</div></div></div></div><div class="intro-image" role="img" aria-label="Architecture traditionnelle chinoise"></div></div></section>
 
@@ -220,7 +232,7 @@
   <script>
     const compactCtaLabels={
       fr:{heroPrimary:'Destinations',heroSecondary:'Parlons-en',introCta:'Notre approche',ctaButton:'Nous écrire'},
-      en:{heroPrimary:'Destinations',heroSecondary:'Start a journey',introCta:'Our approach',ctaButton:'Write to us'},
+      en:{heroPrimary:'Destinations',heroSecondary:'Talk about your journey',introCta:'Our approach',ctaButton:'Write to us'},
       zh:{heroPrimary:'看目的地',heroSecondary:'聊聊旅程',introCta:'了解我们的方式',ctaButton:'联系我们'}
     };
     const applyCompactCtaLabels=(locale)=>{
@@ -251,6 +263,22 @@
     const syncAboutNav=(locale)=>document.querySelectorAll('[data-i18n="navAbout"]').forEach(el=>{el.textContent=aboutNavLabels[locale]||aboutNavLabels.fr});
     syncAboutNav(localStorage.getItem('china-beyond-locale')||'fr');
     document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>syncAboutNav(btn.dataset.lang),0)));
+  </script>
+  <script>
+    const journeyContactButton=document.getElementById('journeyContactButton');
+    const journeyContactOptions=document.getElementById('journeyContactOptions');
+    const quickContactCopy={
+      fr:{phone:'Téléphone',email:'E-mail',sms:'SMS',wechat:'WeChat',note:'Le bouton WeChat tente d’ouvrir l’application et copie le compte Ningsiiii.'},
+      en:{phone:'Phone',email:'E-mail',sms:'SMS',wechat:'WeChat',note:'The WeChat button tries to open the app and copies the ID Ningsiiii.'},
+      zh:{phone:'电话',email:'邮箱',sms:'短信',wechat:'微信',note:'点击微信会尝试打开应用，并复制微信号 Ningsiiii。'}
+    };
+    const applyQuickContactLocale=(locale)=>{const copy=quickContactCopy[locale]||quickContactCopy.fr;document.querySelectorAll('[data-contact-label]').forEach(el=>{el.textContent=copy[el.dataset.contactLabel]||el.textContent});const note=document.getElementById('wechatContactNote');if(note)note.textContent=copy.note};
+    const toggleJourneyContacts=()=>{const open=!journeyContactOptions.classList.contains('open');journeyContactOptions.classList.toggle('open',open);journeyContactButton.setAttribute('aria-expanded',String(open));journeyContactOptions.setAttribute('aria-hidden',String(!open))};
+    if(journeyContactButton&&journeyContactOptions)journeyContactButton.addEventListener('click',toggleJourneyContacts);
+    const copyWeChatId=async()=>{const id='Ningsiiii';try{if(navigator.clipboard)await navigator.clipboard.writeText(id);else throw new Error('clipboard unavailable')}catch{const input=document.createElement('textarea');input.value=id;input.setAttribute('readonly','');input.style.position='fixed';input.style.opacity='0';document.body.appendChild(input);input.select();document.execCommand('copy');input.remove()}};
+    document.querySelector('.quick-contact-wechat')?.addEventListener('click',async(event)=>{event.preventDefault();await copyWeChatId();const note=document.getElementById('wechatContactNote');if(note)note.textContent='微信号 Ningsiiii 已复制，请在微信中搜索。';window.location.href='weixin://dl/chat?Ningsiiii'});
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>applyQuickContactLocale(btn.dataset.lang),0)));
+    applyQuickContactLocale(localStorage.getItem('china-beyond-locale')||'fr');
   </script>
 </body>
 </html>
