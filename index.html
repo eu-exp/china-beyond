@@ -301,3 +301,7 @@ const applyBeijingDestination=locale=>{const card=document.querySelectorAll('.de
 document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>applyBeijingDestination(btn.dataset.lang),0)));
 applyBeijingDestination(localStorage.getItem('china-beyond-locale')||'fr');
 </script>
+
+<style>
+.intro-image::after{content:none!important;display:none!important}
+</style>
