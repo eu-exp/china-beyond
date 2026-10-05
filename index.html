@@ -305,3 +305,60 @@ applyBeijingDestination(localStorage.getItem('china-beyond-locale')||'fr');
 <style>
 .intro-image::after{content:none!important;display:none!important}
 </style>
+
+<style>
+.destinations-carousel-shell{position:relative;display:flex;align-items:center;gap:.8rem}
+.destinations-carousel-track{display:flex;flex:1;gap:1.3rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;touch-action:pan-x;padding:.3rem .15rem 1rem}
+.destinations-carousel-track::-webkit-scrollbar{display:none}
+.destinations-carousel-track>.dest-card{flex:0 0 calc((100% - 2.6rem)/3);min-width:0;scroll-snap-align:start}
+.destinations-carousel-arrow{width:34px;height:34px;flex:0 0 34px;border:1px solid var(--accent);background:var(--white);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;line-height:1;transition:var(--ease)}
+.destinations-carousel-arrow:hover{background:var(--accent);color:var(--white)}
+.destinations-carousel-arrow:disabled{opacity:.3;cursor:default}
+.destinations-carousel-arrow:disabled:hover{background:var(--white);color:var(--accent)}
+@media(max-width:900px){.destinations-carousel-track>.dest-card{flex-basis:calc((100% - 1.3rem)/2)}}
+@media(max-width:720px){.destinations-carousel-shell{gap:.45rem}.destinations-carousel-track{gap:1.1rem;padding-bottom:.75rem}.destinations-carousel-track>.dest-card{flex-basis:100%}.destinations-carousel-arrow{width:28px;height:28px;flex-basis:28px;font-size:.95rem}}
+</style>
+<script>
+(()=>{
+  const grid=document.querySelector('.destinations-grid');
+  if(!grid||grid.dataset.carouselReady)return;
+  const copy={
+    fr:{
+      chengdu:{meta:'Sud-ouest · 4—7 jours',title:'Chengdu',text:'Maisons de thé, pandas et cuisine épicée : une ville douce, vivante et pleine de caractère.',label:'Maison de thé à Chengdu'},
+      shanghai:{meta:'Est · 4—6 jours',title:'Shanghai',text:'Gratte-ciel, ruelles et jardins : une ville ouverte sur le monde, entre énergie et élégance.',label:'Shanghai skyline'},
+      zhangjiajie:{meta:'Centre-sud · 4—6 jours',title:'Zhangjiajie',text:'Falaises de grès, brume et sentiers suspendus : un paysage qui semble sorti d’un rêve.',label:'Montagnes de Zhangjiajie'}
+    },
+    en:{
+      chengdu:{meta:'Southwest · 4—7 days',title:'Chengdu',text:'Tea houses, pandas and spicy cuisine: a gentle, lively city with a character all its own.',label:'Chengdu teahouse'},
+      shanghai:{meta:'East · 4—6 days',title:'Shanghai',text:'Skylines, lanes and gardens: a city open to the world, balancing energy and elegance.',label:'Shanghai skyline'},
+      zhangjiajie:{meta:'Central China · 4—6 days',title:'Zhangjiajie',text:'Sandstone cliffs, mist and suspended paths: a landscape that feels like a dream.',label:'Zhangjiajie mountains'}
+    },
+    zh:{
+      chengdu:{meta:'西南 · 4—7天',title:'成都',text:'茶馆、大熊猫与热辣川味，一座温柔、鲜活又有自己性格的城市。',label:'成都茶馆'},
+      shanghai:{meta:'华东 · 4—6天',title:'上海',text:'摩天大楼、老街与园林交织，一座兼具活力与优雅、面向世界的城市。',label:'上海城市天际线'},
+      zhangjiajie:{meta:'中南 · 4—6天',title:'张家界',text:'砂岩峰林、云雾与悬空步道，仿佛从梦境中走出来的山水。',label:'张家界山峰'}
+    }
+  };
+  const images={
+    chengdu:"url('assets/china-beyond/chengdu-teahouse.jpg')",
+    shanghai:"url('https://images.unsplash.com/photo-1548919973-5ce27cc9371?auto=format&fit=crop&w=1400&q=85')",
+    zhangjiajie:"url('assets/china-beyond/zhangjiajie-mist.jpg')"
+  };
+  const discover={fr:'Découvrir la région →',en:'Discover the region →',zh:'探索这个地区 →'};
+  const cities=['chengdu','shanghai','zhangjiajie'];
+  grid.dataset.carouselReady='true';
+  const shell=document.createElement('div');shell.className='destinations-carousel-shell';
+  const previous=document.createElement('button');previous.type='button';previous.className='destinations-carousel-arrow';previous.setAttribute('aria-label','Previous destinations');previous.innerHTML='‹';
+  const next=document.createElement('button');next.type='button';next.className='destinations-carousel-arrow';next.setAttribute('aria-label','Next destinations');next.innerHTML='›';
+  const makeCard=id=>{const item=document.createElement('article');item.className='dest-card';item.dataset.carouselCity=id;item.innerHTML='<div class="dest-visual" role="img"></div><div class="dest-body"><div class="dest-meta"></div><h3></h3><p></p><a class="link-arrow" href="#contact"></a></div>';const visual=item.querySelector('.dest-visual');visual.style.setProperty('--tone','#26301f');visual.style.setProperty('--image',images[id]);return item};
+  cities.forEach(id=>grid.appendChild(makeCard(id)));
+  const parent=grid.parentNode;parent.insertBefore(shell,grid);shell.appendChild(previous);shell.appendChild(grid);shell.appendChild(next);grid.classList.add('destinations-carousel-track');grid.classList.remove('destinations-grid');
+  const localize=locale=>{const dict=copy[locale]||copy.fr;grid.querySelectorAll('[data-carousel-city]').forEach(card=>{const item=dict[card.dataset.carouselCity];if(!item)return;card.querySelector('.dest-meta').textContent=item.meta;card.querySelector('h3').textContent=item.title;card.querySelector('p').textContent=item.text;card.querySelector('.dest-visual').setAttribute('aria-label',item.label);card.querySelector('.link-arrow').textContent=discover[locale]||discover.fr})};
+  const update=()=>{const max=Math.max(0,grid.scrollWidth-grid.clientWidth-2);previous.disabled=grid.scrollLeft<=2;next.disabled=grid.scrollLeft>=max};
+  previous.addEventListener('click',()=>grid.scrollBy({left:-Math.max(grid.clientWidth*.85,240),behavior:'smooth'}));
+  next.addEventListener('click',()=>grid.scrollBy({left:Math.max(grid.clientWidth*.85,240),behavior:'smooth'}));
+  grid.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>localize(btn.dataset.lang),0)));
+  localize(localStorage.getItem('china-beyond-locale')||'fr');setTimeout(update,0);
+})();
+</script>
