@@ -362,3 +362,13 @@ applyBeijingDestination(localStorage.getItem('china-beyond-locale')||'fr');
   localize(localStorage.getItem('china-beyond-locale')||'fr');setTimeout(update,0);
 })();
 </script>
+
+<script>
+(()=>{
+  const track=document.querySelector('.destinations-carousel-track');
+  const arrows=document.querySelectorAll('.destinations-carousel-arrow');
+  if(!track||arrows.length<2)return;
+  const syncArrowState=()=>{const max=Math.max(0,track.scrollWidth-track.clientWidth-2);arrows[0].disabled=track.scrollLeft<=4;arrows[1].disabled=track.scrollLeft>=max};
+  track.addEventListener('scroll',syncArrowState,{passive:true});window.addEventListener('resize',syncArrowState);syncArrowState();
+})();
+</script>
