@@ -20,26 +20,26 @@
     button{font:inherit;cursor:pointer}
     img{display:block;max-width:100%}
     .container{width:min(92%,1240px);margin:auto}
-    .top-bar{background:var(--paper);border-bottom:1px solid var(--border);color:var(--mid);font-size:.78rem;padding:.55rem 0}
+    .top-bar{display:none}
     .top-bar-inner{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     .top-links{display:flex;gap:1.5rem}
     .top-links a:hover{color:var(--accent)}
-    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    header{position:fixed;inset:0 0 auto;z-index:30;background:linear-gradient(180deg,rgba(12,18,14,.58),rgba(12,18,14,.12));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.18)}
     .nav-inner{display:flex;justify-content:space-between;align-items:center;min-height:78px;gap:2rem}
-    .logo{display:flex;align-items:center;gap:.8rem;font-size:1rem;font-weight:800;letter-spacing:0;white-space:nowrap;color:var(--black)}
+    .logo{display:flex;align-items:center;gap:.8rem;font-size:1rem;font-weight:800;letter-spacing:0;white-space:nowrap;color:var(--white)}
     .logo-mark{width:40px;height:40px;display:block;flex:none}
     .logo-wordmark{display:inline-block;font-family:"Avenir Next","Helvetica Neue",Inter,system-ui,sans-serif;font-size:1.2rem;font-weight:600;letter-spacing:.01em}
     .nav-wrapper{display:flex;align-items:center;gap:2rem;position:relative}
-    .nav-links{display:none;position:absolute;right:0;top:calc(100% + .8rem);min-width:250px;padding:.7rem;background:var(--white);border:1px solid var(--border);box-shadow:var(--shadow);flex-direction:column;gap:.15rem;font-size:.9rem;font-weight:500;color:var(--dark)}
+    .nav-links{display:none;position:absolute;right:0;top:calc(100% + .8rem);min-width:250px;padding:.7rem;background:rgba(12,18,14,.96);border:1px solid rgba(255,255,255,.18);box-shadow:var(--shadow);flex-direction:column;gap:.15rem;font-size:.9rem;font-weight:500;color:var(--white)}
     .nav-links.open{display:flex}
     .nav-links a{position:relative;display:block;padding:.65rem .75rem}
-    .nav-links a::after{content:'';position:absolute;left:.75rem;bottom:.35rem;width:0;height:2px;background:var(--accent);transition:width .25s}
-    .nav-links a:hover{color:var(--accent);background:var(--paper)}
+    .nav-links a::after{content:'';position:absolute;left:.75rem;bottom:.35rem;width:0;height:2px;background:var(--white);transition:width .25s}
+    .nav-links a:hover{color:var(--white);background:rgba(255,255,255,.1)}
     .nav-links a:hover::after{width:100%}
     .nav-actions{display:flex;align-items:center;gap:1rem}
     .lang-switcher{display:flex;gap:.2rem;align-items:center}
-    .lang-btn{border:0;background:transparent;color:var(--mid);padding:.2rem .3rem;border-radius:0;font-size:.68rem;line-height:1;letter-spacing:.04em}
-    .lang-btn:hover,.lang-btn.active{border:0;background:transparent;color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+    .lang-btn{border:0;background:transparent;color:rgba(255,255,255,.78);padding:.2rem .3rem;border-radius:0;font-size:.68rem;line-height:1;letter-spacing:.04em}
+    .lang-btn:hover,.lang-btn.active{border:0;background:transparent;color:var(--white);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
     .btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:2px;padding:.8rem 1.35rem;font-size:.82rem;font-weight:600;letter-spacing:.04em;transition:var(--ease)}
     .btn-primary{background:var(--black);color:var(--white)}
     .btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
@@ -47,9 +47,9 @@
     .btn-outline:hover{color:var(--accent);border-color:var(--accent)}
     .menu-toggle{display:flex;background:transparent;border:0;border-radius:0;width:32px;height:32px;align-items:center;justify-content:center;gap:4px;flex-direction:column;transition:var(--ease)}
     .menu-toggle:hover{background:transparent}
-    .menu-toggle span{width:25px;height:2px;background:var(--black)}
-    .hero{min-height:clamp(600px,84vh,820px);display:flex;align-items:center;color:var(--white);position:relative;background:linear-gradient(90deg,rgba(38,48,31,.72),rgba(38,48,31,.16)),url('https://images.unsplash.com/photo-1627727240334-a6a44ba57729?auto=format&fit=crop&w=2200&q=85') center/cover no-repeat}
-    .hero-content{max-width:720px;padding:4rem 0;transform:translateY(7rem)}
+    .menu-toggle span{width:25px;height:2px;background:var(--white)}
+    .hero{min-height:100svh;display:flex;align-items:center;color:var(--white);position:relative;background:linear-gradient(90deg,rgba(38,48,31,.72),rgba(38,48,31,.16)),url('https://images.unsplash.com/photo-1627727240334-a6a44ba57729?auto=format&fit=crop&w=2200&q=85') center/cover no-repeat}
+    .hero-content{max-width:720px;padding:8.5rem 0 4rem;transform:none}
     .eyebrow{color:var(--accent-soft);font-size:.73rem;letter-spacing:.25em;text-transform:uppercase;font-weight:600;margin-bottom:1.5rem}
     .hero h1{font-size:clamp(1.9rem,3.4vw,3.2rem);line-height:1.08;letter-spacing:-.015em;margin-bottom:1.35rem}
     .hero h1 span{color:var(--accent-soft)}
@@ -143,13 +143,13 @@
       .logo{font-size:.86rem;letter-spacing:0;gap:.55rem}
       .logo-mark{width:34px;height:34px}
       .logo-wordmark{font-size:1.02rem}
-      .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:1rem 4%;flex-direction:column;gap:.45rem}
+      .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:rgba(12,18,14,.96);border-bottom:1px solid rgba(255,255,255,.18);padding:1rem 4%;flex-direction:column;gap:.45rem;color:var(--white)}
       .nav-links.open{display:flex}
       .nav-links a{padding:.55rem .6rem;font-size:.86rem}
       .menu-toggle{display:flex}
       .nav-actions .btn{display:none}
-      .hero{min-height:clamp(560px,92svh,680px)}
-      .hero-content{padding:2.5rem 0 2.75rem;max-width:32rem;transform:translateY(5rem)}
+      .hero{min-height:100svh}
+      .hero-content{padding:7.5rem 0 2.75rem;max-width:32rem;transform:none}
       .eyebrow{font-size:.68rem;letter-spacing:.18em;margin-bottom:1rem}
       .hero h1{font-size:clamp(1.35rem,6.2vw,1.85rem);line-height:1.05;letter-spacing:-.01em;margin-bottom:.9rem}
       .hero p{font-size:.88rem;line-height:1.6;margin-bottom:1.2rem}
@@ -179,8 +179,8 @@
     }
     @media(max-width:420px){
       .features-grid,.footer-grid{grid-template-columns:1fr}
-      .hero{min-height:560px}
-      .hero-content{transform:translateY(4rem)}
+      .hero{min-height:100svh}
+      .hero-content{transform:none}
       .hero h1{font-size:clamp(1.3rem,6.5vw,1.7rem)}
       .hero p{font-size:.86rem}
       .intro-image{min-height:250px}
@@ -192,7 +192,7 @@
 <body data-locale="fr">
   <div class="top-bar"><div class="container top-bar-inner"><span data-i18n="topline">Voyages authentiques · Chine, autrement</span><div class="top-links"><a href="mailto:contact@beyondcn.com">contact@beyondcn.com</a><a href="tel:+33761086397">+33 7 61 08 63 97</a></div></div></div>
   <header><div class="container nav-inner">
-    <a class="logo" href="#top" aria-label="China Beyond home"><img class="logo-mark" src="assets/china-beyond-mark-v13.svg" alt="" aria-hidden="true" /><span class="logo-wordmark">China Beyond</span></a>
+    <a class="logo" href="#top" aria-label="China Beyond home"><img class="logo-mark" src="assets/china-beyond-mark-v13-inverse.svg" alt="" aria-hidden="true" /><span class="logo-wordmark">China Beyond</span></a>
     <div class="nav-wrapper">
       <nav class="nav-links" id="navLinks" aria-label="Navigation principale"><a href="about.html" data-i18n="navAbout">À propos</a><a href="vision.html" data-i18n="navVision">Notre vision</a><a href="destinations.html" data-i18n="navDestinations">Destinations</a><a href="styles.html" data-i18n="navStyles">Styles de voyage</a><a href="contact.html" data-i18n="navContact">Contact</a></nav>
       <div class="nav-actions"><div class="lang-switcher" aria-label="Language switcher"><button class="lang-btn active" data-lang="fr">FR</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="zh">CN</button></div><button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
