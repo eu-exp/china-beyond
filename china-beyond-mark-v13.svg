@@ -1,7 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
-  <title>China Beyond — geometric solid B with vertical 华境</title>
+  <title>China Beyond — geometric solid B with transparent cut-out 华境</title>
+  <defs>
+    <mask id="b-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120" mask-type="luminance">
+      <rect width="120" height="120" fill="#000000"/>
+      <path d="M43 32H62C73 32 80 37.5 80 46C80 52 77 56 72 59.5C77 62.5 81 67.5 81 75C81 84 74 90 62 90H43V32Z" fill="#FFFFFF"/>
+      <g fill="#000000" font-family="Zen Maru Gothic, M PLUS Rounded 1c, Hiragino Maru Gothic ProN, Arial Rounded MT Bold, Noto Sans SC, sans-serif" font-size="13.5" font-weight="600" text-anchor="middle">
+        <text x="62" y="53">华</text>
+        <text x="62" y="77">境</text>
+      </g>
+    </mask>
+  </defs>
   <path d="M92 32A44 44 0 1 0 92 88" stroke="#111111" stroke-width="14" stroke-linecap="round" fill="none"/>
-  <path d="M43 32H62C73 32 80 37.5 80 46C80 52 77 56 72 59.5C77 62.5 81 67.5 81 75C81 84 74 90 62 90H43V32Z" fill="#111111"/>
-  <text x="62" y="53" text-anchor="middle" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.4" stroke-linecap="round" stroke-linejoin="round" paint-order="stroke" font-family="Zen Maru Gothic, M PLUS Rounded 1c, Hiragino Maru Gothic ProN, Arial Rounded MT Bold, Noto Sans SC, sans-serif" font-size="13.5" font-weight="600">华</text>
-  <text x="62" y="77" text-anchor="middle" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.4" stroke-linecap="round" stroke-linejoin="round" paint-order="stroke" font-family="Zen Maru Gothic, M PLUS Rounded 1c, Hiragino Maru Gothic ProN, Arial Rounded MT Bold, Noto Sans SC, sans-serif" font-size="13.5" font-weight="600">境</text>
+  <path d="M43 32H62C73 32 80 37.5 80 46C80 52 77 56 72 59.5C77 62.5 81 67.5 81 75C81 84 74 90 62 90H43V32Z" fill="#111111" mask="url(#b-cutout)"/>
 </svg>
