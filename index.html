@@ -291,3 +291,13 @@
 </html>
 
 <script>const v='?v=logo-cutout-v3';document.querySelectorAll('img[src*="china-beyond-mark-v13"]').forEach(i=>i.src=i.src.split('?')[0]+v);document.querySelectorAll('link[rel~="icon"]').forEach(l=>l.href='china-beyond-mark-v13.svg'+v);</script></script>
+
+<style>
+@media(max-width:720px){.destinations-grid,.styles-grid{grid-template-columns:1fr;gap:1.1rem}.dest-card{min-height:0}.dest-visual{min-height:230px}.dest-body{padding:1.25rem}.dest-body h3{font-size:1.55rem;line-height:1.15}.dest-body p{font-size:.92rem;line-height:1.65}.style-card{min-height:0}}
+</style>
+<script>
+const beijingDestinationCopy={fr:{meta:'Nord · 5—8 jours',title:'Pékin',text:'Une capitale vivante, des hutongs, des palais et une scène contemporaine entre histoire et création.',label:'Rues de Pékin'},en:{meta:'North · 5—8 days',title:'Beijing',text:'A living capital of hutongs, palaces and contemporary culture, where history and creation meet.',label:'Beijing city streets'},zh:{meta:'华北 · 5—8天',title:'北京',text:'胡同、故宫与当代城市生活交织，一座在历史与创造之间持续生长的首都。',label:'北京城市街景'}};
+const applyBeijingDestination=locale=>{const card=document.querySelectorAll('.dest-card')[2];if(!card)return;const copy=beijingDestinationCopy[locale]||beijingDestinationCopy.fr;const meta=card.querySelector('.dest-meta');const title=card.querySelector('[data-i18n="dest3Title"]');const text=card.querySelector('[data-i18n="dest3Text"]');if(meta)meta.textContent=copy.meta;if(title)title.textContent=copy.title;if(text)text.textContent=copy.text;const visual=card.querySelector('.dest-visual');if(visual){visual.setAttribute('aria-label',copy.label);visual.style.setProperty('--image',"url('assets/china-beyond/beijing-forbidden-city.jpg')")}};
+document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>applyBeijingDestination(btn.dataset.lang),0)));
+applyBeijingDestination(localStorage.getItem('china-beyond-locale')||'fr');
+</script>
