@@ -16,3 +16,5 @@ const aboutNavLabels={fr:'À propos',en:'About',zh:'关于我们'};
 const syncAboutNav=locale=>document.querySelectorAll('[data-i18n="navAbout"]').forEach(el=>{el.textContent=aboutNavLabels[locale]||aboutNavLabels.fr});
 syncAboutNav(localStorage.getItem('china-beyond-locale')||'fr');
 document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setTimeout(()=>syncAboutNav(btn.dataset.lang),0)));
+
+const v='?v=logo-cutout-v3';document.querySelectorAll('img[src*="china-beyond-mark-v13"]').forEach(i=>i.src=i.src.split('?')[0].replace('/assets/','/')+v);document.querySelectorAll('link[rel~="icon"]').forEach(l=>l.href='china-beyond-mark-v13.svg'+v);
